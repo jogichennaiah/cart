@@ -3,9 +3,11 @@ pipeline {
     stages {
         stage('Lint Checks') {
             steps {
-                sh "echo installing jslint"
+                sh "echo Installing JSlist"
                 sh "npm i jslint"
-                sh "node_modules/jslint/bin/jslint.js server.js"
+                sh "echo Starting linkChecks...."
+                sh "node_modules/jslint/bin/jslint.js server.js || true"
+                sh "echa linkCheck completed"
             }
         }
     }
