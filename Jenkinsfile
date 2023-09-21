@@ -6,7 +6,7 @@ pipeline {
         stage('Lint Checks') {
             steps {
                 script {
-                    sample.info()
+                    sample.info("Learn DevOps the Cloud")
                 }
                 sh "echo Installing JSlist"
                 sh "npm i jslint"
