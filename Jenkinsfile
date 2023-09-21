@@ -13,7 +13,7 @@ pipeline {
         stage('Generating Artifacts') {
             steps {
                 sh "echo Generating artifacts...."
-                sh "npm install && ls -ltr/"
+                sh "npm install"
                 
             }
         }
