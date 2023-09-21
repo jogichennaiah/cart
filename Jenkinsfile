@@ -7,7 +7,7 @@ pipeline {
                 sh "npm i jslint"
                 sh "echo Starting linkChecks...."
                 sh "node_modules/jslint/bin/jslint.js server.js || true"
-                sh "echa linkCheck completed"
+                sh "echo linkCheck completed"
             }
         }
         stage('Generating Artifacts') {
