@@ -9,8 +9,7 @@ pipeline {
      }
      stages {
          stage('Terraform Init') {
-             steps {
-                
+             steps {              
                  sh "cd mutable-infra"
                  sh "ls env-dev"
                  sh "terrafile -f env-${ENV}/Terrafile"
