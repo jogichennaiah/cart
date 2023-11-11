@@ -11,6 +11,7 @@ pipeline {
          stage('Terraform Init') {
              steps {              
                  sh '''
+                    ls env-dev
                     cd mutable-infra
                     terrafile -f env-${ENV}/Terrafile
                     terraform init -backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
