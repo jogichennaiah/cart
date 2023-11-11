@@ -10,11 +10,11 @@ pipeline {
      stages {
          stage('Terraform Init') {
              steps {              
-                 sh ...
+                 sh '''
                     cd mutable-infra
                     terrafile -f env-${ENV}/Terrafile
                     terraform init -backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
-                ...
+                     '''
              }
          }
          stage('Terraform Plan') {
