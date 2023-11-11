@@ -10,8 +10,9 @@ pipeline {
      stages {
          stage('Terraform Init') {
              steps {
-                 sh "ls env-dev"
+                
                  sh "cd mutable-infra"
+                 sh "ls env-dev"
                  sh "terrafile -f env-${ENV}/Terrafile"
                  sh "terraform init -backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure"
              }
