@@ -1,5 +1,5 @@
 app:
-    source: "https://github.com/jogichennaiah/tf-module-mutable.git"
+    source: "https://github.com/jogichennaiah/tf-module-mutable-app.git"
     version: "main"
 
 
