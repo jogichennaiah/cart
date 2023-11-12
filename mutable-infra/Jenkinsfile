@@ -1,6 +1,6 @@
-pipeline {
-    agent any 
-    options {
+ pipeline {
+     agent any 
+     options {
          ansiColor('xterm')
      }
      parameters {
@@ -9,26 +9,24 @@ pipeline {
      }
      stages {
          stage('Terraform Init') {
-             steps {              
-                 sh '''
-                    ls env-dev
-                    cd mutable-infra
-                    terrafile -f env-${ENV}/Terrafile
-                    terraform init -backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
-                     '''
+             steps {
+                 script { git branch: 'main', url: 'https://github.com/b55-clouddevops/cart.git' }
+                 sh "terrafile -f ${WORKSPACE}/mutable-infra/env-${ENV}/Terrafile"
+                 sh "cd ${WORKSPACE}/mutable-infra"
+                 sh "terraform init -backend-config=env-${ENV}/${ENV}-backend.tfvars"
              }
          }
          stage('Terraform Plan') {
              steps {
-                sh "cd mutable-infra"
-                sh "terraform plan -var-file=env-${ENV}/${ENV}.tfvars"
+                 sh "cd ${WORKSPACE}/mutable-infra"
+                 sh "terraform plan -var-file=env-${ENV}/${ENV}.tfvars"
              }
          }
-        stage('Terraform Action') {
+         stage('Terraform Action') {
              steps {
-                sh "cd mutable-infra"
-                sh "terraform ${ACTION} -auto-approve -var-file=env-${ENV}/${ENV}.tfvars"
-            }
+                 sh "cd ${WORKSPACE}/mutable-infra"
+                 sh "terraform ${ACTION} -auto-approve -var-file=env-${ENV}/${ENV}.tfvars"
+             }
          }
      }
 }
