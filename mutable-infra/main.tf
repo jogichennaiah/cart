@@ -9,5 +9,6 @@ module "cart" {
     APP_PORT             = var.APP_PORT
     APP_VERSION          = var.APP_VERSION
     INTERNAL             = var.INTERNAL
+    PRIVATE_ALB_ARN      = var.PRIVATE_ALB_ARN
 }
 
