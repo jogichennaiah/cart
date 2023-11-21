@@ -2,5 +2,5 @@
 
 env.COMPONENT="cart"
 env.APPTYPE="nodejs"
-env.NEXUS_URL="172.31.93.190"
+env.NEXUS_URL="172.31.82.43"
 nodejs()
